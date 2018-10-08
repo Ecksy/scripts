@@ -1,5 +1,7 @@
 #!/usr/bin/bash
 filename="$1"
+echo "Running WHOIS query: $(date)" | tee -a client-whois.txt
+echo "" | tee -a client-whois.txt
 while read -r line
 do
     echo "*********************************************************************" | tee -a client-whois.txt
