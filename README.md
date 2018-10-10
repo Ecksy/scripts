@@ -1,2 +1,2 @@
 # Scripts
-Various scripts I use in Kali or macOS
+Various scripts I use in Kali, macOS or in Windows
