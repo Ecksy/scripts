@@ -5,7 +5,7 @@ echo ""
 ls *.gnmap
 echo ""
 echo "********** Select file(s) to process **********"
-read -p "Enter filename(s): " filename
+read -ep "Enter filename(s): " filename
 echo ""
 cat $filename | grep open | awk '{printf "%s\t", $2;
  for (i=4;i<=NF;i++) {
