@@ -1,6 +1,6 @@
 #!/usr/bin/env python2
-# I found this script somewhere but it dies when the query limit is reached, had other bugs too in the original
-# Shodan limits queries to 1 per second. Added a 1 second sleep to each query to prevents errors
+# I found this script on GH but it dies when the query limit is reached, had other bugs too in the original
+# Shodan limits queries to 1 per second. Added a 1 second sleep to each query to prevent errors
 
 import shodan
 import sys
