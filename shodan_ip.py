@@ -1,4 +1,6 @@
 #!/usr/bin/env python2
+# I found this script somewhere but it dies when the query limit is reached
+# Shodan limits queries to 1 per second. Added a 1 second sleep to each query to prevents errors
 
 import shodan
 import sys
@@ -7,7 +9,7 @@ import netaddr
 import time
 
 
-KEY = 'add your key here'
+KEY = 'add your api key here'
 api = shodan.Shodan(KEY)
 
 
