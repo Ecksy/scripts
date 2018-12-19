@@ -20,7 +20,7 @@ do
 #	outname=`echo $line |sed -e 's;/;-;'`
 	echo $outname
 	echo "$COUNTER: Scanning $line"
-	grep "25/open" $name  | awk '{print $2}'>>25-$outname.txt
+	grep "25/open" $name  | awk '{print $2}'>> 25-$outname.txt
 	grep "135/open" $name | awk '{print $2}'>> 135-$outname.txt
 	grep "1434/open" $name | awk '{print $2}'>> 1434-$outname.txt
 	grep "137/open" $name | awk '{print $2}'>> 137-$outname.txt
@@ -29,10 +29,10 @@ do
 	grep "23/open" $name | awk '{print $2}'>> 23-$outname.txt
 	grep "53/open" $name | awk '{print $2}'>> 53-$outname.txt
 	grep "80/open" $name | awk '{print $2}'>> 80-$outname.txt
-	grep "139/open" $name  | awk '{print $2}'>>139-$outname.txt
-	grep "443/open" $name  | awk '{print $2}'>>443-$outname.txt
-	grep "8080/open" $name  | awk '{print $2}'>>8080-$outname.txt
-	grep "9001/open" $name  | awk '{print $2}'>>9001-$outname.txt
-	grep "/open" $name  | awk '{print $2}'>>all-$outname.txt
+	grep "139/open" $name  | awk '{print $2}'>> 139-$outname.txt
+	grep "443/open" $name  | awk '{print $2}'>> 443-$outname.txt
+	grep "8080/open" $name  | awk '{print $2}'>> 8080-$outname.txt
+	grep "9001/open" $name  | awk '{print $2}'>> 9001-$outname.txt
+	grep "/open" $name  | awk '{print $2}' | sort -t. -k1,1n -k2.2n -k3,3n -k4,4n >> all-$outname.txt
 	echo "--------------------------------------"
 done 
