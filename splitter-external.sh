@@ -1,5 +1,5 @@
 #!/bin/bash
-# Split nmap.gnmap output for common open ports
+# Split nmap .gnmap output for common open ports
 # USAGE: splitter.sh <grepable nmap files>
 #
 #Count number of files
