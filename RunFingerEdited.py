@@ -225,6 +225,7 @@ def ShowResults(Host):
        Hostname, DomainJoined, Time = DomainGrab(Host)
        Signing, OsVer, LanManClient = SmbFinger(Host)
        NullSess, Ms17010 = SmbNullSession(Host)
+       print ""
        print "Retrieving information for %s"%Host[0]
        print "--------------------------------------------------------------"
        print "SMB signing:			", Signing
