@@ -2,7 +2,7 @@
 
 # Shell script to set up drivers for Alfa AWUS036xxx
 # You must have an internet connection.
-#Script was current as of 03-10-2019
+# Script was current as of 03-10-2019
 
 # update your repositories
 apt-get update
