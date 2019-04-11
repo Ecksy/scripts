@@ -2,5 +2,5 @@
 filename="$1"
 while read -r line
 do
-    ./scripts/shodan_ip.py -i $line | tee -a client-shodan.txt
+    ./shodan_ip.py -i $line | tee -a client-shodan.txt
 done < "$filename"
