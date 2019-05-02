@@ -1,1 +1,3 @@
+Add the formula to the right of the first IP then drag down. The formula creates 3 digits for each octet to allow for proper sorting.
+
 =TEXT(LEFT(A1,FIND(".",A1,1)-1),"000") & "." & TEXT(MID(A1,FIND( ".",A1,1)+1,FIND(".",A1,FIND(".",A1,1)+1)-FIND(".",A1,1)-1),"000") & "." & TEXT(MID(A1,FIND(".",A1,FIND(".",A1,1)+1)+1,FIND(".",A1, FIND(".",A1,FIND(".",A1,1)+1)+1)-FIND(".",A1,FIND(".",A1,1)+1)-1), "000") & "." & TEXT(RIGHT(A1,LEN(A1)-FIND(".",A1,FIND(".",A1,FIND( ".",A1,1)+1)+1)),"000")
