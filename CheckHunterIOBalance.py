@@ -24,7 +24,7 @@ json_data = requests.get('https://api.hunter.io/v2/account?api_key=' + api_key).
 if request.status_code == 200:
 	print('Query: ' + str(request.status_code) + ' Success, API up!')
 elif request.status_code == 401:
-	print('API key invalid, check account or typo possibly')
+	print('!!!! API key invalid, check your API access or typo possibly')
 	sys.exit("")
 elif request.status_code == 429:
 	print('Monthly quota reached')
