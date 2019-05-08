@@ -47,7 +47,7 @@ planType = json_data['data']['plan_name']
 today = datetime.datetime.today()
 #convert account reset date from string to datetime
 resetDatetoDatetime = datetime.datetime.strptime(resetDate, "%Y-%m-%d")
-#calulate days to reset
+#calculate days to reset
 daystoReset = resetDatetoDatetime - today
 
 #print the loot
