@@ -1,10 +1,8 @@
-#!/bin/bash
+#!/usr/bin/bash
 
-#Guys – I threw together a python script to make launching relay attacks easier. It should automatically find and use your Kali IP on eth0 and will prompt for the target IP. I believe smbrelay is limited to one target. It will set up the metasploit payload, start responder, and begin the relay attack against the target. Hitting CTRL C will close the responder and metasploit windows but it will stop the smbrelay so you can change it to another target. The only catch is to switch targets you have to run the command manually against a different IP.
+# Guys – I threw together a shell script to make launching relay attacks easier. It should automatically find and use your Kali IP on eth0 and will prompt for the target IP. I believe smbrelay is limited to one target. It will set up the metasploit payload, start responder, and begin the relay attack against the target. Hitting CTRL C will close the responder and metasploit windows but it will stop the smbrelay so you can change it to another target. The only catch is to switch targets you have to run the command manually against a different IP.
 
-# Note this script requires the disabling the HTTP and SMB protocols in Responder
-
-# located in /usr/share/responder/Responder.conf
+# Note this script requires the disabling the HTTP and SMB protocols in Responder.conf located in /usr/share/responder/Responder.conf
 
 
 # Ask the user for the target IP address
