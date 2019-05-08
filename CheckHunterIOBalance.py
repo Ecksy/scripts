@@ -43,13 +43,14 @@ resetDate = json_data['data']['reset_date']
 planType = json_data['data']['plan_name']
 
 #calculate days remaining before reset
+#get todays date
 today = datetime.datetime.today()
-#convert date from string to datetime
+#convert account reset date from string to datetime
 resetDatetoDatetime = datetime.datetime.strptime(resetDate, "%Y-%m-%d")
-#calulate days
+#calulate days to reset
 daystoReset = resetDatetoDatetime - today
 
-#print data
+#print the loot
 print("")
 print('Name:			' + firstName + " " + lastName)
 print('Account:		' + emailAddress)
