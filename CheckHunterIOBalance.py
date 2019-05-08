@@ -2,6 +2,7 @@
 
 import sys
 import requests
+import datetime
 
 header = '''
 Hunter.io balance
@@ -41,6 +42,13 @@ requestsUsed = json_data['data']['calls']['used']
 resetDate = json_data['data']['reset_date']
 planType = json_data['data']['plan_name']
 
+#calculate days remaining before reset
+today = datetime.datetime.today()
+#convert date from string to datetime
+resetDatetoDatetime = datetime.datetime.strptime(resetDate, "%Y-%m-%d")
+#calulate days
+daystoReset = resetDatetoDatetime - today
+
 #print data
 print("")
 print('Name:			' + firstName + " " + lastName)
@@ -49,4 +57,5 @@ print('Account Type:		' + planType)
 print('Requests Remaining:	' + str(requestsAvailable))
 print('Requests Used:		' + str(requestsUsed))
 print('Reset Date:		' + resetDate)
+print('Days until reset:	' + str(daystoReset.days))
 sys.exit()
