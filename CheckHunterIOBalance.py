@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 import sys
 import requests
 
@@ -18,7 +20,6 @@ json_data = requests.get('https://api.hunter.io/v2/account?api_key=' + api_key).
 #print(request.status_code)
 
 #check if connectivity is up or down
-
 if request.status_code == 200:
 	print('Query: ' + str(request.status_code) + ' Success, API up!')
 elif request.status_code == 401:
