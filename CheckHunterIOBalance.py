@@ -10,7 +10,7 @@ Hunter.io balance
 print(header)
 
 #paste in your api key
-api_key="afdb0e8f92be573705efc102f04e7e29e3313dc5"
+api_key=""
 
 #get account data for API status
 request = requests.get('https://api.hunter.io/v2/account?api_key=' + api_key)
