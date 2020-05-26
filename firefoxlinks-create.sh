@@ -6,4 +6,5 @@ filename="$1"
 filename2=$(awk '{print "http://" $1}' "$filename")
 #filename2=$(awk '{print "https://" $1}' "$filename")
 #filename2=$(awk '{print "https://" $1 ":8080"}' "$filename")
-echo "$filename2" | tee "${filename}_links.txt"
+echo "$filename2" > "${filename}_links.txt"
+echo 'Success!!! File created!'
