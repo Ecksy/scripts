@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 # Take a file of hashes and sorts out unique entries. 
 # USAGE: hashsort.sh <file with hashes>
 #
