@@ -5,6 +5,7 @@ do
     echo "*********************************************************************" | tee -a $1-dnsrecon.txt
     echo "*********************************************************************" | tee -a $1-dnsrecon.txt
     echo "" | tee -a $1-dnsrecon.txt
+    echo "root@kali:~# dnsrecon -d " $line | tee -a $1-dnsrecon.txt
     dnsrecon -d $line | tee -a $1-dnsrecon.txt
     echo "" | tee -a $1-dnsrecon.txt
 done < "$filename"
