@@ -7,7 +7,7 @@ do
     echo "*********************************************************************" | tee -a $1-whois.txt
     echo "*********************************************************************" | tee -a $1-whois.txt
     echo "" | tee -a $1-whois.txt
-    echo "root@kali:~# whois " $line | tee -a $1-whois.txt
+    echo "root@kali:~# whois" $line | tee -a $1-whois.txt
     echo "WHOIS query for:" $line | tee -a $1-whois.txt
     whois -H --verbose $line | tee -a $1-whois.txt
     echo "" | tee -a $1-whois.txt
