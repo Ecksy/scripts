@@ -4,8 +4,9 @@ import re
 import argparse
 
 def process_file(input_file):
-    # Regular expression to extract domain names and IP addresses
-    domain_re = re.compile(r'root@kali:~# dig a (\S+) \+short')
+    # Regular expression to extract domain names
+    domain_re = re.compile(r'Results for (\S+):')
+    # Regular expression to extract IP addresses
     ip_re = re.compile(r'^(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})$')
 
     with open(input_file, 'r') as f:
@@ -13,19 +14,20 @@ def process_file(input_file):
 
     domain_to_ip = {}
     ip_set_to_domain = {}
+    current_domain = None  # To keep track of the current domain being processed
 
     for line in lines:
         # Extract domain
         domain_match = domain_re.search(line)
         if domain_match:
             current_domain = domain_match.group(1)
-            if current_domain not in domain_to_ip:
-                domain_to_ip[current_domain] = set()
+            domain_to_ip[current_domain] = set()
         # Extract IP addresses
-        ip_match = ip_re.search(line)
-        if ip_match:
-            ip = ip_match.group(1)
-            domain_to_ip[current_domain].add(ip)
+        elif current_domain:  # Make sure we are under a domain section
+            ip_match = ip_re.match(line.strip())
+            if ip_match:
+                ip = ip_match.group(1)
+                domain_to_ip[current_domain].add(ip)
 
     for domain, ips in domain_to_ip.items():
         ip_tuple = tuple(sorted(ips))  # Convert set to tuple to be used as a dict key
