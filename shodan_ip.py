@@ -46,24 +46,29 @@ def lookup_ip(ip):
     except shodan.APIError as e:
         print('API Error: {0}\n'.format(e))
 
+def process_file(filename):
+    with open(filename, 'r') as file:
+        for line in file:
+            ip = line.strip()
+            if ip:
+                lookup_ip(ip)
+
 if __name__ == '__main__':
-    # Parse command line arguments using argparse
     desc = """
 This script will query the Shodan API and return a list of open ports on the
-specified IP addresses. The IP address(es) to check can be given as a single
-IP, a range of IPs, or in CIDR notation.
+specified IP addresses. The IP address(es) can be given as a single IP, a range of IPs, 
+in CIDR notation, or from a file containing a list of IPs.
 """
     parser = argparse.ArgumentParser(description=desc)
     ipgroup = parser.add_mutually_exclusive_group(required=True)
     ipgroup.add_argument('-i', action='store', default=None,
-                         metavar="IP",
-                         help='A single IP address. ex: 192.168.1.1')
+                         metavar="IP", help='A single IP address. ex: 192.168.1.1')
     ipgroup.add_argument('-r', action='store', default=None,
-                         metavar="IP", nargs=2,
-                         help='A start and end IP address. ex: 192.168.1.1 192.168.1.10')
+                         metavar="IP", nargs=2, help='A start and end IP address. ex: 192.168.1.1 192.168.1.10')
     ipgroup.add_argument('-c', action='store', default=None,
-                         metavar="CIDR",
-                         help='A range of IPs in CIDR notation. ex: 192.168.1.0/24')
+                         metavar="CIDR", help='A range of IPs in CIDR notation. ex: 192.168.1.0/24')
+    ipgroup.add_argument('-f', action='store', default=None,
+                         metavar="FILE", help='Path to a file containing IP addresses, one per line.')
 
     args = parser.parse_args()
 
@@ -75,18 +80,18 @@ IP, a range of IPs, or in CIDR notation.
             start, end = args.r
             ip_range = netaddr.IPRange(start, end)
 
-            ips = []
-            for c in ip_range.cidrs():
-                ips.extend(c)
-
-            for ip in sorted(set(ips)):
+            for ip in ip_range:
                 lookup_ip(str(ip))
 
-        else:
+        elif args.c is not None:
             for ip in netaddr.IPNetwork(args.c):
                 lookup_ip(str(ip))
+
+        elif args.f is not None:
+            process_file(args.f)
 
     except netaddr.AddrFormatError as e:
         print('Address Error: {0}.\n'.format(str(e)))
         parser.print_help()
         sys.exit(1)
+
