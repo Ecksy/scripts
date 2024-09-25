@@ -1,11 +1,15 @@
-#!/usr/bin/bash
-#ForgetYouFirefoxESR!
+#!/bin/bash
 filename="$1"
-lineCount=$(wc $filename | awk '{print $1}')
-echo ""
-echo $lineCount "links in file."
+lineCount=$(wc -l < "$filename")
+echo "$lineCount links in file"
 read -p "Continue? Enter or Ctrl+c to quit"
-while read -r line
-do
-    gnome-terminal -- bash -c "google-chrome --no-sandbox --ignore-certificate-errors $line"
+
+# Create a string of URLs to open in Chrome
+urls=""
+
+while read -r line; do
+    urls="$urls $line"
 done < "$filename"
+
+# Open all URLs in new Chrome tabs with SSL certificate bypass
+google-chrome --no-sandbox --ignore-certificate-errors --new-tab $urls
